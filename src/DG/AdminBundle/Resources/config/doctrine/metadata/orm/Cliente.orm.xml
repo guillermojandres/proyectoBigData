@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Cliente" table="cliente">
+    <indexes>
+      <index name="fk_cliente_cliente_potencial1_idx" columns="cliente_potencial_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="60" nullable="false"/>
+    <field name="telefono" type="string" column="telefono" length="25" nullable="false"/>
+    <field name="nrc" type="string" column="nrc" length="25" nullable="true"/>
+    <field name="nit" type="string" column="nit" length="25" nullable="true"/>
+    <field name="correoelectronico" type="string" column="correoelectronico" length="60" nullable="true"/>
+    <field name="movil" type="string" column="movil" length="25" nullable="true"/>
+    <field name="paginaWeb" type="string" column="pagina_web" length="80" nullable="true"/>
+    <field name="referidoPor" type="string" column="referido_por" length="60" nullable="true"/>
+    <field name="descripcion" type="string" column="descripcion" length="255" nullable="true"/>
+    <field name="direccion" type="string" column="direccion" length="100" nullable="true"/>
+    <many-to-one field="clientePotencial" target-entity="ClientePotencial">
+      <join-columns>
+        <join-column name="cliente_potencial_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

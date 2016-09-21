@@ -1,0 +1,68 @@
+
+{% extends ':Layout:layout2.html.twig' %}
+
+{% block descripcion_y_acciones %}
+
+
+    
+        {% block descripcion %}
+            
+        {% endblock%}
+        {% block acciones %}
+            
+        {% endblock %}
+
+
+{% endblock %}
+{% block js_extend %}
+
+      
+  {% endblock %} 
+
+        {% block navegacion_Y_body %}
+  
+        {% block navegacion %}
+            
+        {% endblock %}
+        {% block cuerpo %}
+    <div class="row">
+        <h3 style="color: black;margin-left:60px;margin-botton:30px;">Inicio de Sesi&oacute;n</h3>
+             
+  <form action="{% block form_action %}{{ path("abogado_security_check") }}{% endblock %}" method="post" id="frmLogin">    
+  
+    
+            {% block alert -%}
+            {% if error %}
+                <div style="color:red;margin-bottom: 20px;">{{ error.message }}</div>
+            {% endif %}
+        {% endblock %}     
+    <div class="col-md-3">
+          <!-- general form elements -->
+            <div class="box box-primary">
+  
+                <div class="form-group">
+                     <label for="correoEmpresa">Usuario :</label>
+                     <input type="text" class="form-control" id="username" name="_username" placeholder="User name" value="{{ last_username }}">
+                </div>
+                <div class="form-group">
+                     <label for="correoEmpresa">Contraseña:</label>
+                     <input type="password" class="form-control" id="contrasenha" name="_password" placeholder="*********">
+                </div>
+                
+                
+                <div class="form-group">
+                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary" name="login">
+                </div>
+                 
+
+           
+          </div>
+          
+    </div>
+        
+   </form>  
+            
+
+    </div> 
+{% endblock %}
+{% endblock %}

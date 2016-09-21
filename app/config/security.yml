@@ -1,0 +1,48 @@
+imports:
+    - { resource: parameters.yml }
+security:
+    encoders:
+        DG\AdminBundle\Entity\CtlUsuario:
+            algorithm: sha512
+            encode-as-base64: true
+            iterations: 10       
+#    role_hierarchy:
+#        ROLE_MEDICO:   ROLE_USER 
+#        ROLE_ADMIN:    [ROLE_MEDICO, ROLE_ALLOWED_TO_SWITCH]
+        #ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        
+    providers:      
+        user_login:
+            entity: { class: DG\AdminBundle\Entity\CtlUsuario, property: username }
+        
+    firewalls:
+        #Firewalls para ingreso de la Plus belle
+        login_:
+            pattern:  ^/secured/login$
+            security: false
+            anonymous: ~
+        secured_area_:
+            pattern: ^/
+            switch_user: { role: ROLE_ADMIN, parameter: _change }
+            form_login:
+                login_path: /secured/login
+                check_path: /secured/login_check
+                default_target_path: /admin/dashboard
+                #always_use_default_target_path: true 
+                failure_path:      /secured/login
+                #use_referer:         true
+            logout:
+                path: /secured/logout
+                target: /secured/login
+            anonymous: ~ 
+            
+            
+            
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/usuario/registeruser/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/usuario/account/created, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/*, role:  [ROLE_USER, ROLE_ADMIN]} 
+        - { path: ^/secured/*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        #Roles admin
+        - { path: ^/admin/*, role:  ROLE_ADMIN }        

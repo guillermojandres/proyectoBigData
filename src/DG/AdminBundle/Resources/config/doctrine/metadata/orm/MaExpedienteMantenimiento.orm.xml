@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="MaExpedienteMantenimiento" table="ma_expediente_mantenimiento">
+    <indexes>
+      <index name="fk_ma_expediente_mantenimiento_ma_mantenimiento1_idx" columns="ma_mantenimiento_id"/>
+      <index name="fk_ma_expediente_mantenimiento_ma_maquina1_idx" columns="ma_maquina_id"/>
+      <index name="fk_ma_expediente_mantenimiento_proyecto1_idx" columns="proyecto_id"/>
+      <index name="fk_ma_expediente_mantenimiento_proveedor1_idx" columns="proveedor_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="serie" type="string" column="serie" length="45" nullable="true"/>
+    <field name="costo" type="float" column="costo" precision="10" scale="0" nullable="true"/>
+    <field name="descripcion" type="text" column="descripcion" length="65535" nullable="true"/>
+    <field name="numeroFactura" type="integer" column="numero_factura" nullable="true"/>
+    <field name="placaNumeroEquipo" type="string" column="placa_numero_equipo" length="20" nullable="true"/>
+    <field name="motorista" type="string" column="motorista" length="30" nullable="true"/>
+    <field name="cantidad" type="integer" column="cantidad" nullable="true"/>
+    <field name="ordenSuminstro" type="integer" column="orden_suminstro" nullable="true"/>
+    <many-to-one field="proveedor" target-entity="Proveedor">
+      <join-columns>
+        <join-column name="proveedor_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proyecto" target-entity="Proyecto">
+      <join-columns>
+        <join-column name="proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maMaquina" target-entity="MaMaquina">
+      <join-columns>
+        <join-column name="ma_maquina_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maMantenimiento" target-entity="MaTipoMantenimiento">
+      <join-columns>
+        <join-column name="ma_mantenimiento_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

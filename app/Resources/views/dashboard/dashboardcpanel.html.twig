@@ -1,0 +1,91 @@
+{% extends ':Layout:layout2.html.twig' %}
+
+{% block css %}
+    {{parent()}}
+{% endblock css%}
+{% block js %}
+     {{parent()}}
+     
+    
+{% endblock %}
+
+
+{% block descripcion_y_acciones %}
+
+    
+ <div class="row">
+ {% block descripcion %}
+        <div class="col-md-8">
+            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Control Panel</p>
+            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Pruebas generales del proyecto</p>
+        </div>
+ {% endblock%}
+ {% block acciones %}
+     
+     	<div class="col-md-4" style="margin-top: 50px;">
+                                <!-- Boton Modificacion -->
+                                {{parent()}}
+                                
+                               
+                              
+                               
+	    </div>
+     
+ {% endblock %}
+		
+</div>
+
+{% endblock %}
+{% block navegacion_Y_body %}
+    <div class="row">
+        {% block navegacion %}
+		<hr style="margin-top: 0px !important;">
+                <div class="col-md-2 colorAnclas" style="border-right: 1px solid #f3f3f3;">
+                    <!-- Left Navigation -->
+                    <ul style="list-style: none; padding: 0;">
+                        <a href="{{ path('dashboard_index') }}" class="leftnava colorAnclas"><li class="leftnav left active">Menu<span class="pull-right right"></span></li></a>
+                        <a href="" class="leftnava colorAnclas"><li class="leftnav left ">Configuraci&oacute;n</li></a>
+
+                    </ul>
+                </div>	
+       
+            
+   
+       {% endblock %}
+
+{% block cuerpo %}
+     <div class="col-md-10">
+        <!-- Incio de Opcion de Modulo -->
+        <div class="row module first">
+            <div class="row" >
+                <a href="{{ path('admin_index_principal') }}">
+                    <div class="col-md-10 colorAnclas">
+
+                        <p class="text-left" style="font-size: 14px; margin-top: 10px; margin-bottom: 0px;"><strong>Base de Datos</strong></p>
+                        <p class="text-left" style="font-size: 12px; #8D99A6 !important;">Seleccionar una base de datos</p>
+                    </div>
+
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+     
+
+
+
+{% endblock %}
+
+</div>
+{% endblock %}
+ 
+ {% block js_extend %}
+    
+     
+      
+      
+  {% endblock %} 
+
+
+

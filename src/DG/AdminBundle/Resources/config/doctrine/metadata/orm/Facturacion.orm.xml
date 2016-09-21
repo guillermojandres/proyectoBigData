@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Facturacion" table="facturacion">
+    <indexes>
+      <index name="fk_facturacion_tipo_pago1_idx" columns="tipo_pago_id"/>
+      <index name="fk_facturacion_proyecto1_idx" columns="proyecto_id"/>
+      <index name="fk_facturacion_cliente1_idx" columns="cliente_id"/>
+      <index name="fk_facturacion_tipo_factura1_idx" columns="tipo_factura_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="numeroRegistro" type="integer" column="numero_registro" nullable="true"/>
+    <field name="nit" type="string" column="nit" length="25" nullable="true"/>
+    <field name="giro" type="string" column="giro" length="45" nullable="true"/>
+    <field name="vtaACita" type="string" column="vta_a_cita" length="45" nullable="true"/>
+    <field name="direccion" type="string" column="direccion" length="80" nullable="true"/>
+    <field name="departamento" type="string" column="departamento" length="50" nullable="false"/>
+    <field name="son" type="string" column="son" length="150" nullable="true"/>
+    <field name="entregadoPor" type="string" column="entregado_por" length="50" nullable="true"/>
+    <field name="duiNitEntregadoPor" type="string" column="dui_nit_entregado_por" length="20" nullable="true"/>
+    <field name="recibidoPor" type="string" column="recibido_por" length="45" nullable="true"/>
+    <field name="duiNitRecibidoPor" type="string" column="dui_nit_recibido_por" length="20" nullable="true"/>
+    <many-to-one field="tipoFactura" target-entity="TipoFactura">
+      <join-columns>
+        <join-column name="tipo_factura_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cliente" target-entity="Cliente">
+      <join-columns>
+        <join-column name="cliente_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proyecto" target-entity="Proyecto">
+      <join-columns>
+        <join-column name="proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoPago" target-entity="CondicionesPago">
+      <join-columns>
+        <join-column name="tipo_pago_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

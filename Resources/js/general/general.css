@@ -1,0 +1,16 @@
+ .form-group.required .control-label:after {
+            content:"*";
+            color:red;
+
+        }
+        
+         .msg {
+                display: none;
+               font-size: 11px;
+            }
+            .error {
+                color: red;
+            }
+            .success {
+                color: green;
+            }

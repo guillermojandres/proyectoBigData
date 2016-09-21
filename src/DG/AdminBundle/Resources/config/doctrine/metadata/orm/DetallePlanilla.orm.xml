@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="DetallePlanilla" table="detalle_planilla">
+    <indexes>
+      <index name="fk_detalle_planilla_empleado1_idx" columns="empleado_id"/>
+      <index name="fk_detalle_planilla_planilla1_idx" columns="planilla_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="sueldoBase" type="float" column="sueldo_base" precision="10" scale="0" nullable="true"/>
+    <field name="isss" type="float" column="isss" precision="10" scale="0" nullable="true"/>
+    <field name="afp" type="float" column="afp" precision="10" scale="0" nullable="true"/>
+    <field name="renta" type="float" column="renta" precision="10" scale="0" nullable="true"/>
+    <field name="totalDeducible" type="float" column="total_deducible" precision="10" scale="0" nullable="true"/>
+    <field name="totalDescuentos" type="float" column="total_descuentos" precision="10" scale="0" nullable="true"/>
+    <field name="totalPagar" type="float" column="total_pagar" precision="10" scale="0" nullable="true"/>
+    <many-to-one field="planilla" target-entity="Planilla">
+      <join-columns>
+        <join-column name="planilla_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="empleado" target-entity="Empleado">
+      <join-columns>
+        <join-column name="empleado_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="CajaChica" table="caja_chica">
+    <indexes>
+      <index name="fk_caja_chica_estado_registro1_idx" columns="estado_registro_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fecha" type="date" column="fecha" nullable="false"/>
+    <field name="concepto" type="string" column="concepto" length="255" nullable="false"/>
+    <field name="nombre" type="string" column="nombre" length="60" nullable="true"/>
+    <field name="cantidadPor" type="float" column="cantidad_por" precision="10" scale="0" nullable="true"/>
+    <field name="valor" type="string" column="valor" length="45" nullable="true"/>
+    <many-to-one field="estadoRegistro" target-entity="EstadoRegistro">
+      <join-columns>
+        <join-column name="estado_registro_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

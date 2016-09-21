@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Proyecto" table="proyecto">
+    <indexes>
+      <index name="fk_proyecto_cliente1_idx" columns="cliente_id"/>
+      <index name="fk_proyecto_contacto1_idx" columns="contacto_id"/>
+      <index name="fk_proyecto_estado_proyecto1_idx" columns="estado_proyecto_id"/>
+      <index name="fk_proyecto_tipo_proyecto1_idx" columns="tipo_proyecto_id"/>
+      <index name="fk_proyecto_cootizacion1_idx" columns="cootizacion_id"/>
+      <index name="fk_proyecto_encargado_proyecto1_idx" columns="encargado_proyecto_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="60" nullable="true"/>
+    <field name="direccion" type="text" column="direccion" length="65535" nullable="true"/>
+    <field name="observaciones" type="string" column="observaciones" length="45" nullable="true"/>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="true"/>
+    <field name="fechaFinal" type="date" column="fecha_final" nullable="true"/>
+    <many-to-one field="cootizacion" target-entity="Cootizacion">
+      <join-columns>
+        <join-column name="cootizacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="encargadoProyecto" target-entity="EncargadoProyecto">
+      <join-columns>
+        <join-column name="encargado_proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="tipoProyecto" target-entity="TipoProyecto">
+      <join-columns>
+        <join-column name="tipo_proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="estadoProyecto" target-entity="EstadoProyecto">
+      <join-columns>
+        <join-column name="estado_proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="contacto" target-entity="Contacto">
+      <join-columns>
+        <join-column name="contacto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cliente" target-entity="Cliente">
+      <join-columns>
+        <join-column name="cliente_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

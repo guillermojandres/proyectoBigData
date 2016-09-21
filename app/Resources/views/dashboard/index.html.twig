@@ -1,0 +1,107 @@
+<html>
+    <head>
+          
+                <meta charset="utf-8">
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                      <title>Big Data Project</title>
+                      <meta name="robots" content="noindex">
+                      
+      
+                      <link rel="stylesheet" href="{{ asset('Resources/src/css/bootstrap.css')}}" >
+                      <link href="{{ asset('Resources/src/css/style.css')}}" rel="stylesheet">
+                      <link rel="stylesheet" href="{{ asset('Resources/sweetalert-master/dist/sweetalert.css')}}"> 
+                          
+                            
+                       
+                                 <script type="text/javascript" src="{{ asset('Resources/jquery/jquery-1.11.3.min.js') }}"></script>
+                                 <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+                                 <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+                                 <script src="{{ asset('Resources/sweetalert-master/dist/sweetalert.min.js') }}"></script>
+                                 <link rel="shortcut icon" href="{{ asset('Resources/imagenes/box.png')}}" type="image/x-icon">
+                                 <link rel="icon" href="{{ asset('Resources/imagenes/box.png')}}" type="image/x-icon">
+
+    </head>
+    <body>
+        <style>
+            .tamanhoFuente{
+                font-size: 12px !important;
+            }
+        </style>
+ 
+        
+        <!-- Barra de Navegacion con Breadcrumb -->
+        {% include ':Layout:nav2.html.twig' %}
+	<!-- Fin de Barra de Navegacion -->
+        <div class="container">
+		<p class="robo text-center" style="font-size: 35px; font-weight: 300; font-family: 'Roboto', sans-serif; margin-bottom: 0px;">Dashboard</p>
+		<p class="robo text-center" style="font-size: 17px; font-weight: 300; font-family: 'Roboto', sans-serif; margin-bottom: 30px;">Panel principal proyecto Big Data.</p>
+		<!-- Col md 10 -->
+		<div class="row">
+			<div class="col-md-1"> </div>
+			<div class="col-md-10 col-xs-12"> 
+				<div class="row">
+					<!-- Inicio de Icono de Notificaciones -->
+					<div class="col-md-12 col-xs-6 col-sm-2" style="margin-top: 20px;">
+						<a href="{{ path('dashboard_cpanel') }}" style="text-decoration: none; color: inherit; outline: 0; margin-top: 20px;"><span class="text-center">
+							<p style="margin-botttom: 0px; padding-bottom: 0px;"><img src="{{ asset('Resources/imgBigData/png/database.png')}}"></p>
+                <p style="padding-top: 5px; margin-top: 0px;" ><strong>Inicio</strong></p>
+						</span></a>
+					</div>
+					<!-- Fin de Icono de Notificaciones -->
+					<!-- Inicio de Icono de Notificaciones -->
+				
+					<!-- Fin de Icono de Notificaciones -->
+				</div> <!-- /row pequeño -->
+			</div> <!-- /colmd10 -->
+			<div class="col-md-1"> </div>
+		</div> <!-- /row grande -->
+	</div> <!-- /container -->
+	<!-- Fin de Iconos de Navegacion de Sistema -->
+
+                <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+                
+                <!-- Include all compiled plugins (below), or include individual files as needed -->
+                <script src="{{ asset('Resources/src/js/bootstrap.js')}}"></script>
+                <script src="{{ asset('Resources/src/js/shortcut.js')}}"></script> <!-- http://www.openjs.com/scripts/events/keyboard_shortcuts/v1.php -->
+                <script type="text/javascript">
+                        $(document).ready(function(){
+
+                            $(document).on("click","#compras",function() {
+
+                              swal("Informacion", "Lo sentimos mucho, pero este modulo aun no se encuentra en funcionamiento, estamos trabajando en ello.", "info");
+
+
+
+                            });
+                            
+                            
+
+
+                        });
+                </script>
+    
+     
+                
+                
+                
+                
+                {#<script type="text/javascript">
+                        $( document ).ready(function() {
+                    shortcut.add("Ctrl+Shift+X",function() {
+
+                    });
+                  });
+                </script>
+                <script type="text/javascript">
+                $(function () {
+                    var options = {
+                    };
+                    $('.grid-stack').gridstack(options);
+                });
+                
+                </script>#}
+        
+
+    </body>
+</html>

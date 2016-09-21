@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="RegistroPorProyecto" table="registro_por_proyecto">
+    <indexes>
+      <index name="fk_registro_pos_proyecto_proyecto1_idx" columns="proyecto_id"/>
+      <index name="fk_registro_pos_proyecto_ma_maquina1_idx" columns="ma_maquina_id"/>
+      <index name="fk_registro_pos_proyecto_empleado1_idx" columns="empleado_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="horaLlegada" type="decimal" column="hora_llegada" precision="10" scale="0" nullable="true"/>
+    <field name="horaSalida" type="decimal" column="hora_salida" precision="10" scale="0" nullable="true"/>
+    <field name="recibiCantidadDe" type="float" column="recibi_cantidad_de" precision="10" scale="0" nullable="true"/>
+    <field name="horometroInicial" type="decimal" column="horometro_inicial" precision="10" scale="0" nullable="true"/>
+    <field name="horometroFinal" type="decimal" column="horometro_final" precision="10" scale="0" nullable="true"/>
+    <field name="horasEfectivas" type="decimal" column="horas_efectivas" precision="10" scale="0" nullable="true"/>
+    <field name="horasExtras" type="decimal" column="horas_extras" precision="10" scale="0" nullable="true"/>
+    <field name="fechaRegistro" type="date" column="fecha_registro" nullable="true"/>
+    <field name="numeroReporte" type="string" column="numero_reporte" length="20" nullable="false"/>
+    <field name="observaciones" type="string" column="observaciones" length="255" nullable="true"/>
+    <field name="mantenimiento" type="string" column="mantenimiento" length="20" nullable="true"/>
+    <many-to-one field="empleado" target-entity="Empleado">
+      <join-columns>
+        <join-column name="empleado_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maMaquina" target-entity="MaMaquina">
+      <join-columns>
+        <join-column name="ma_maquina_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proyecto" target-entity="Proyecto">
+      <join-columns>
+        <join-column name="proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

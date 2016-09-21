@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="DetalleFecha" table="detalle_fecha">
+    <indexes>
+      <index name="fk_detalle_fecha_detalle_cotizacion1_idx" columns="detalle_cotizacion_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="fechaInicio" type="string" column="fecha_inicio" length="45" nullable="true"/>
+    <field name="fechaFinal" type="string" column="fecha_final" length="45" nullable="false"/>
+    <field name="numeroDiasTrabajo" type="integer" column="numero_dias_trabajo" nullable="true"/>
+    <many-to-one field="detalleCotizacion" target-entity="DetalleCotizacion">
+      <join-columns>
+        <join-column name="detalle_cotizacion_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

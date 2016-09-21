@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="DetalleProMaqPer" table="detalle_pro_maq_per">
+    <indexes>
+      <index name="fk_detalle_pro_maq_per_proyecto1_idx" columns="proyecto_id"/>
+      <index name="fk_detalle_pro_maq_per_ma_maquina1_idx" columns="ma_maquina_id"/>
+      <index name="fk_detalle_pro_maq_per_empleado1_idx" columns="empleado_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="precioCobro" type="float" column="precio_cobro" precision="10" scale="0" nullable="true"/>
+    <field name="numeroHorasMinimas" type="integer" column="numero_horas_minimas" nullable="true"/>
+    <field name="sueldoDiaTrabajador" type="float" column="sueldo_dia_trabajador" precision="10" scale="0" nullable="true"/>
+    <field name="biaticos" type="float" column="biaticos" precision="10" scale="0" nullable="true"/>
+    <field name="opeEstado" type="integer" column="ope_estado" nullable="true"/>
+    <field name="tipoCobro" type="integer" column="tipo_cobro" nullable="true"/>
+    <field name="fechaRegistro" type="date" column="fecha_registro" nullable="true"/>
+    <field name="estado" type="integer" column="estado" nullable="true"/>
+    <many-to-one field="empleado" target-entity="Empleado">
+      <join-columns>
+        <join-column name="empleado_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="maMaquina" target-entity="MaMaquina">
+      <join-columns>
+        <join-column name="ma_maquina_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="proyecto" target-entity="Proyecto">
+      <join-columns>
+        <join-column name="proyecto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

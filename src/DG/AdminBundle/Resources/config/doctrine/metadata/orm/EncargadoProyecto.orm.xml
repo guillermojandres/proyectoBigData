@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EncargadoProyecto" table="encargado_proyecto">
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombre" type="string" column="nombre" length="45" nullable="true"/>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="true"/>
+    <field name="dui" type="string" column="dui" length="15" nullable="true"/>
+    <field name="telefono" type="string" column="telefono" length="20" nullable="true"/>
+  </entity>
+</doctrine-mapping>

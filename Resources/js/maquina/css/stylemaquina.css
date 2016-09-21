@@ -1,0 +1,24 @@
+
+        
+        .noactiva{
+            border: 0 !important;
+            padding: 10px 10px !important;
+        }
+        .colorDiv{
+            
+            background-color: white !important;
+        }
+        
+        
+            .mdl-data-table th{
+            text-align: center !important;
+        }
+            .mdl-data-table td{
+            text-align: center !important;
+        }
+        .form-group.required .control-label:after {
+            content:"*";
+            color:red;
+            
+            
+        }

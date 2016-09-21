@@ -1,0 +1,133 @@
+<html>
+    <head>
+        {% block head %}
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>Proyecto BigData</title>
+            <meta name="robots" content="noindex">
+
+            {% block css %}
+                <!-- Stylesheet de Bootstrap -->
+                <link rel="stylesheet" href="{{ asset('Resources/src/css/bootstrap.css')}}" >
+                <!-- Stylesheet Personales -->
+              <link href="{{ asset('Resources/src/css/style.css')}}" rel="stylesheet">
+                <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                <link rel="stylesheet" href="{{ asset('Resources/Zebra/css/bootstrap.css') }}">
+                 <style>
+                                .colorAnclas{
+                                    color: black;
+                                    font-size: 12px !important;
+                                    line-height: 15px!important;
+                                    
+                                }
+                                .control-label{
+                                    font-size: 12px !important;
+                                    font-weight: 400;
+                                }
+                               
+                                .form-group.required .control-label:after {
+                                    content:"*";
+                                    color:red;
+
+
+                                }
+
+                   </style>
+                {% block css_extend %}        
+                {% endblock %}    
+            {% endblock css%}
+
+
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+            <!-- Favicon (Icono Pequeño) -->
+            <link rel="shortcut icon" href="{{ asset('Resources/src/img/box.png')}}" type="image/x-icon">
+            <link rel="icon" href="{{ asset('Resources/src/img/box.png')}}" type="image/x-icon">
+
+            <script type="text/javascript" src="{{ asset('Resources/jquery/jquery-1.11.3.min.js') }}"></script>
+            <script src="{{ asset('Resources/Zebra/javascript/zebra_datepicker.js') }}"></script>
+            <script src="{{ asset('Resources/Zebra/inicializacioncalendarios.js') }}"></script>
+
+            {% block js %}
+
+            {% endblock %}   
+
+                 
+        {% endblock %}    
+    </head>
+    <body>
+ {% block body %}
+        <!-- Boton con Dropdown -->
+				
+        <!-- Barra de Navegacion con Breadcrumb -->
+        {% include ':Layout:nav2.html.twig' %}
+	<!-- Fin de Barra de Navegacion -->
+                        
+  <!-- Template -->
+            <div class="container">
+                
+           
+            {% block descripcion_y_acciones %}
+                
+                {% block descripcion %}                    
+                {% endblock %}
+                {% block acciones %}
+
+                    <div class="btn-group pull-right"  style="margin-bottom: 10px;">
+                        <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  id="acciones" style="margin-left: 5px;">
+                            Navegacion <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="">Inicio</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </div> 
+                    
+                {% endblock acciones %}
+            {% endblock %}	
+            {% block navegacion_Y_body %}                    
+                {% block navegacion %}                              
+                {% endblock %}
+                               
+                {% block cuerpo %}
+                    <div class="col-md-10" style="margin-bottom: 10px;">
+                        <button class="btn btn-default sans" type="button" id="goBack" style="border-radius: 0 !important;">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Atras
+                        </button>
+                    </div>
+              {#<div class="clearfix"></div>#}
+                {% endblock cuerpo %}
+            {% endblock %}	        	
+	</div>
+ 
+{% endblock %}
+{%block js_template %}
+    <script>
+                 $('#goBack').on('click', function(){
+               {# alert('prueba');#}
+                window.history.back();
+            });
+        </script>
+   
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ asset('Resources/src/js/bootstrap.js')}}"></script>
+    <script src="{{ asset('Resources/src/js/shortcut.js')}}"></script> <!-- http://www.openjs.com/scripts/events/keyboard_shortcuts/v1.php -->
+    <script type="text/javascript">
+        $( document ).ready(function() {
+            shortcut.add("Ctrl+G",function() {
+                $("#buscar").focus();
+            });
+        });
+    </script>
+
+    {% block js_extend %}
+    {% endblock %}
+{% endblock %}
+ 
+    </body>
+</html>

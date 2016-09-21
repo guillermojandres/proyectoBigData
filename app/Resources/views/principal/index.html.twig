@@ -1,0 +1,176 @@
+{% extends ':Layout:layout2.html.twig' %}
+
+{% block css %}
+    {{parent()}}
+    <link rel="stylesheet" href="{{ asset('Resources/select2/dist/css/select2.css')}}">
+     <link rel="stylesheet" href="{{ asset('Resources/sweetalert-master/dist/sweetalert.css')}}">
+         <link rel="stylesheet" href="{{ asset('Resources/js/general/general.css')}}"> 
+{% endblock css%}
+{% block js %}
+     {{parent()}}
+    <script src="{{ asset('Resources/jQuery-Mask/src/jquery.mask.js') }}"></script>
+    <script src="{{ asset('Resources/select2/dist/js/select2.js') }}"></script>
+    <script src="{{ asset('Resources/sweetalert-master/dist/sweetalert.min.js') }}"></script>
+
+{% endblock %}
+
+
+{% block descripcion_y_acciones %}
+
+    
+ <div class="row">
+ {% block descripcion %}
+        <div class="col-md-8">
+            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Base de Datos</p>
+            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Selecci&oacute;n  de una base de datos</p>
+        </div>
+ {% endblock%}
+ {% block acciones %}
+     
+     	<div class="col-md-4" style="margin-top: 50px;">
+                                
+          {{parent()}}
+                              
+                                
+	   </div>
+     
+ {% endblock %}
+		
+		</div>
+
+{% endblock %}
+{% block navegacion_Y_body %}
+    	<div class="row">
+       {% block navegacion %}
+    <hr style="margin-top: 0px !important;">
+                <div class="col-md-2 colorAnclas" style="border-right: 1px solid #f3f3f3;">
+                    <!-- Left Navigation -->
+                    <ul style="list-style: none; padding: 0;">
+                        <a href="{{ path('dashboard_index') }}" class="leftnava colorAnclas"><li class="leftnav left active">Menu<span class="pull-right right"></span></li></a>
+                      
+                    </ul>
+                </div>  
+       
+            
+   
+       {% endblock %}
+
+{% block cuerpo %}
+    
+<div class="col-md-10">
+
+    <div class="row">
+                <div class="form-column col-md-5">
+                </div>
+        <div class="form-column col-md-1">
+          <div class="form-group">
+                            <select name="dbMotor" id="bdMotor">
+                                <option value="mysql">
+                                    Mysql    
+                                </option>
+                            </select>                               
+          </div>
+        </div>
+        <div class="form-column col-md-1"  >
+         <div class="form-group">
+                <a class="btn btn-sm btn-info btn-flat " id="buscarBD"><i class="fa  fa-search"></i>&nbsp;Buscar
+
+                </a>
+          </div>
+        </div>
+        <div class="form-column col-md-5">
+        </div>
+                       
+    </div>
+    <div id="tabla" style="color:black;" class="col-md-12">
+      
+
+
+    </div>
+    
+
+   
+     
+              
+ 
+</div>
+    
+
+{% endblock %}
+
+       </div>
+{% endblock %}
+ 
+ {% block js_extend %}
+      
+  <script type="text/javascript">     
+  $(document).ready(function() {
+        $("#bdMotor").select2();
+
+        var tipo = $("#bdMotor").val();
+
+    $(document).on("click","#buscarBD",function() {
+
+              $.ajax({
+                      type: 'POST',
+                      async: false,
+                      dataType: 'json',
+                      data: {tipo:tipo},
+                      url: Routing.generate('mostrarBd'),
+                      success: function (data)
+                      {
+
+
+                if (data.estado==true) {
+                  console.log(data);
+
+              $.each(data, function( key, value ) {
+
+                       $.each(value, function( k, v ) {
+
+var form="<div class='row' style='margin-top:20px;'><div class='col-md-4'></div>\n\
+<div class='col-md-2'><b>"+v+"</b></div>\n\
+<div class='col-md-2'>\n\
+<div' class='btn btn-success' value='"+v+"' id='"+v+"' class='bdSeleccion'>SELECT</div></div>\n\
+<div class='col-md-4'></div><div class='clearfix'></div></div>";
+$("#tabla").append(form); 
+
+
+                      });
+
+                    });
+                      
+               
+                  
+
+                  };
+                                                     
+
+                      },
+                      error: function (xhr, status)
+                      {
+                      }
+                });
+
+
+    });
+
+
+
+$(document).on("click",".btn",function() {
+
+  var x = $(this).attr("id");
+      alert(x);
+
+});
+                    
+  });
+
+
+</script>
+  
+     
+      
+      
+  {% endblock %} 
+

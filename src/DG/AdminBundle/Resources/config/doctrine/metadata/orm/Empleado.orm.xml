@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Empleado" table="empleado">
+    <indexes>
+      <index name="fk_empleado_estructura_salarial1_idx" columns="estructura_salarial_id"/>
+      <index name="fk_empleado_puesto1_idx" columns="puesto_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nombres" type="string" column="nombres" length="45" nullable="true"/>
+    <field name="apellidos" type="string" column="apellidos" length="45" nullable="true"/>
+    <field name="edad" type="string" column="edad" length="45" nullable="true"/>
+    <field name="direccion" type="string" column="direccion" length="60" nullable="true"/>
+    <field name="telefono" type="string" column="telefono" length="20" nullable="true"/>
+    <field name="nit" type="string" column="nit" length="25" nullable="true"/>
+    <many-to-one field="puesto" target-entity="Puesto">
+      <join-columns>
+        <join-column name="puesto_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="estructuraSalarial" target-entity="EstructuraSalarial">
+      <join-columns>
+        <join-column name="estructura_salarial_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
