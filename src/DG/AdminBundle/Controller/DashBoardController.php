@@ -30,6 +30,7 @@ class DashBoardController extends Controller
         
         return $this->render('dashboard/index.html.twig', array(
             
+            
         ));
     }
     
