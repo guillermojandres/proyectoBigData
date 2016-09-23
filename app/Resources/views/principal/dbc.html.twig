@@ -1,0 +1,171 @@
+{% extends ':Layout:layout2.html.twig' %}
+
+{% block css %}
+    {{parent()}}
+     <link href="{{ asset('Resources/intro/assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('Resources/intro/assets/css/demo.css')}}" rel="stylesheet">
+    <!-- Add IntroJs styles -->
+    <link href="{{ asset("Resources/intro/introjs.css")}}" rel="stylesheet">
+    <link href="{{ asset("Resources/intro/assets/css/bootstrap-responsive.min.css")}}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{{ asset('Resources/select2/dist/css/select2.css')}}">
+     <link rel="stylesheet" href="{{ asset('Resources/sweetalert-master/dist/sweetalert.css')}}">
+         <link rel="stylesheet" href="{{ asset('Resources/js/general/general.css')}}"> 
+{% endblock css%}
+{% block js %}
+     {{parent()}}
+    <script type="text/javascript" src="{{ asset("Resources/intro/intro.js")}}"></script>
+    <script type="text/javascript" src="{{ asset("Resources/js/dbc/dbc.js")}}"></script>
+    <script src="{{ asset('Resources/jQuery-Mask/src/jquery.mask.js') }}"></script>
+    <script src="{{ asset('Resources/select2/dist/js/select2.js') }}"></script>
+    <script src="{{ asset('Resources/sweetalert-master/dist/sweetalert.min.js') }}"></script>
+
+{% endblock %}
+
+
+{% block descripcion_y_acciones %}
+
+    
+ <div class="row">
+ {% block descripcion %}
+        <div class="col-md-8">
+            <p class="robo" style="font-weight: 300; margin-bottom: 0px; font-size: 30px;">Base de Datos</p>
+            <p class="robo" style="font-weight: 300; font-size: 14px; height: 40px;">Selecci&oacute;n  de una base de datos</p>
+        </div>
+ {% endblock%}
+ {% block acciones %}
+     
+     	<div class="col-md-4" style="margin-top: 50px;">
+                                
+          {{parent()}}
+                              
+                                
+	   </div>
+     
+ {% endblock %}
+		
+		</div>
+
+{% endblock %}
+{% block navegacion_Y_body %}
+    	<div class="row">
+       {% block navegacion %}
+    <hr style="margin-top: 0px !important;">
+                <div class="col-md-2 colorAnclas" style="border-right: 1px solid #f3f3f3;">
+                    <!-- Left Navigation -->
+                    <ul style="list-style: none; padding: 0;">
+                        <a href="{{ path('dashboard_index') }}" class="leftnava colorAnclas"><li class="leftnav left active">Menu<span class="pull-right right"></span></li></a>
+                      
+                    </ul>
+                </div>  
+       
+            
+   
+       {% endblock %}
+
+{% block cuerpo %}
+    
+<div class="col-md-10">
+
+    <div class="row">
+
+  
+    <div class="container-narrow">
+
+      <div class="masthead">
+        
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h4 id="step1">Data Base Converter</h4>
+        <a class="btn btn-success" href="javascript:void(0);" onclick="startIntro();">Iniciar</a>
+      </div>
+      <hr>
+
+    </div>
+      
+    <script type="text/javascript">
+      function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "<p style='text-aling:justify;'><center>Bienvenido al convertidor de bases de datos DBC</center></p>"
+              },
+              { 
+                intro: "<center><p style='text-aling:justify;'><b>Selecciona el gestor de la base de datos a convertir</b></p></center>\n\
+                        <select class='form-control' name='dbMotor' id='dbMotor'>\n\
+                            <option value='1'>SQL SERVER</option>\n\
+                            <option value='2'>Mysql</option>\n\
+                        </select>"
+              },
+              { 
+                intro: '<div class="container">\n\
+                           <div class="row">\n\
+                           <div class="form-column col-sm-3">\n\
+                                <div class="form-group" >\n\
+                                <label for="host" class="control-label">Host-name</label>\n\
+                                <input type="text" class="form-control" id="host" placeholder="Hostname" name="host" >\n\
+                                </div>\n\
+                           </div>\n\
+\                           <div class="form-column col-sm-3">\n\
+                                <div class="form-group" >\n\
+                                <label for="host" class="control-label">Port</label>\n\
+                                <input type="text" class="form-control" id="port" placeholder="Port" name="port" >\n\
+                                </div>\n\
+                           </div>\n\
+\                       <div class="col-sm-6"></div>\n\
+\                       <div class="clearfix"></div>\n\
+                            <div class="form-column col-sm-3">\n\
+                                <div class="form-group" >\n\
+                                <label for="user" class="control-label">Usuario</label>\n\
+                                <input type="text" class="form-control" id="user" placeholder="Usuario" name="user" >\n\
+                                </div>\n\
+                           </div>\n\
+                            <div class="form-column col-sm-3"><div class="form-group" >\n\
+                                <label for="pass" class="control-label">Pass</label>\n\
+                                <input type="password" class="form-control" id="pass" placeholder="Contraseña" name="pass" >\n\
+                                </div>\n\
+                           </div>\n\
+                            <div class="col-sm-6"></div>\n\
+                            </div></div>'
+              },
+              {
+              intro:'Aqui estan los valores de la base de datos'
+              
+              }
+              
+            ]
+          });
+
+          intro.start();
+      }
+    </script>
+
+        
+        
+        
+        
+                       
+    </div>
+
+
+   
+     
+              
+ 
+</div>
+    
+
+{% endblock %}
+
+       </div>
+{% endblock %}
+ 
+ {% block js_extend %}
+ 
+ {% endblock %} 
+

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpKernel\Exception;
+use DG\AdminBundle\Entity\SQL;
 
 /**
  * Maquina controller.
@@ -26,14 +27,14 @@ class PrincipalController extends Controller
     {
         
 
-        return $this->render('principal/index.html.twig', array(
+        return $this->render('principal/dbc.html.twig', array(
          
         ));
     }
 
     
       
-       /**
+     /**
      * @Route("/mostrarBd/data", name="mostrarBd", options={"expose"=true})
      * @Method("POST")
      */
@@ -46,14 +47,21 @@ class PrincipalController extends Controller
          if($isAjax){
             
             $em = $this->getDoctrine()->getManager();
-            $tipoBD = $request->get('tipo');
-
-            $sql = "";
+            $tipoBD = $request->get('dbMotor');
             switch ($tipoBD) {
-                case 'mysql':
-                        $sql="show databases;";
-                    
-                    break;
+                case 1:
+                $hostname = 'JANDRES';
+                $port = '1433';
+                $dbname = 'tempdb';
+                $username = 'Jandres\GJandres';
+                $pwd = '';
+                
+                $obj = new SQL($hostname, $port, $dbname, $username, $pwd);
+                $n=$obj->connect();
+                var_dump($n);
+                die();
+                   
+                break;
                 
                 default:
                    var_dump("Moriste en el intento");
@@ -61,20 +69,16 @@ class PrincipalController extends Controller
             }
             
             
-               $em = $this->getDoctrine()->getManager();
-               $stmt = $em->getConnection()->prepare($sql);
-               $stmt->execute();
-               $data = $stmt->fetchAll();
-               $data['estado'] =true;
+          
         
             return new Response(json_encode($data)); 
-            
             
          }
         
         
-        
-    }    
+    }
+
+    
       
       
       
