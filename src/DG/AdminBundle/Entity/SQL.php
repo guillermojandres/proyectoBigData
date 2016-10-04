@@ -7,6 +7,7 @@
  */
 namespace DG\AdminBundle\Entity;
 
+
 /**
  * Description of SQL
  *
@@ -71,9 +72,9 @@ private $db;
     public function connect(){
 
         try {
-            $this->db = new PDO ("dblib:host=$this->hostname:$this->port;dbname=$this->dbname", "$this->username", "$this->pwd");
+            $this->db = new \PDO ("dblib:host=$this->hostname:$this->port;dbname=$this->dbname", "$this->username", "$this->pwd");
 
-           
+          
 
         } catch (PDOException $e) {
             $this->logsys .= "Failed to get DB handle: " . $e->getMessage() . "\n";

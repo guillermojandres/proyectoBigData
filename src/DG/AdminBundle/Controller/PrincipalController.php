@@ -50,22 +50,35 @@ class PrincipalController extends Controller
             $tipoBD = $request->get('dbMotor');
             switch ($tipoBD) {
                 case 1:
-                $hostname = 'JANDRES';
-                $port = '1433';
-                $dbname = 'tempdb';
-                $username = 'Jandres\GJandres';
-                $pwd = '';
+                    
+                    
+                $dsn = "Driver={ODBC Driver 11 for SQL Server};Server={JANDRES};Database=prueba;Trusted_Connection=yes;ColumnEncryption=E nabled;";  
+                $usuario = "Jandres\GJandres"; 
+                $clave=""; 
+                $cid=odbc_connect($dsn, $usuario, $clave); 
                 
-                $obj = new SQL($hostname, $port, $dbname, $username, $pwd);
-                $n=$obj->connect();
-                var_dump($n);
-                die();
+                if (!$cid){ 
+                echo 'Acm1pt'; 
+                }
+                else{
+                    
+                        
+                    $sql="SELECT name FROM master.dbo.sysdatabases"; 
+                    $result=odbc_exec($cid,$sql); 
+                    $x['databases']= odbc_result_all($result);
+                    $y = new Response(json_encode($x));
+                    var_dump($y);
+                    die();
+                    
+                
+                } 
+               
                    
                 break;
                 
                 default:
-                   var_dump("Moriste en el intento");
-                    break;
+                var_dump("Moriste en el intento");
+                break;
             }
             
             
@@ -78,25 +91,7 @@ class PrincipalController extends Controller
         
     }
 
-    
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-    
-    
-    
+
 
     
 }
