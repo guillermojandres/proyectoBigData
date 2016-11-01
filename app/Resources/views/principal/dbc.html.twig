@@ -70,7 +70,7 @@
 
     <div class="row">
 
-  
+ 
     <div class="container-narrow">
 
       <div class="masthead">
@@ -78,6 +78,7 @@
       </div>
 
       <hr>
+    
 
       <div class="jumbotron">
         <h4 id="step1">Big Data Converter</h4>
@@ -134,8 +135,8 @@
                             </div></div>'
               },
               {
-              intro:'Aqui estan los valores de la base de datos'
-              
+                element: '#step5',
+                intro: 'Bases de datos encontradas'
               }
               
             ]
@@ -153,11 +154,23 @@
     </div>
 
 
-   
-     
-              
- 
 </div>
+{#Modal donde se listan todas las bases de datos encontradas#}
+                    <div class="modal-content modal fade modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-header " Style="height:45px;">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
+                            <p id="encabezado" style="text-align: center;font-size: 20px;">Bases de datos encontradas en el servidor SQL</p>
+                            
+                        </div>
+                        <div class="modal-body" id="bdExistentes">
+
+
+                        </div>
+                      
+
+                    </div>
+         
+
     
 
 {% endblock %}
