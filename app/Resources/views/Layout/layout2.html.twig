@@ -13,19 +13,18 @@
                 <!-- Stylesheet Personales -->
               <link href="{{ asset('Resources/src/css/style.css')}}" rel="stylesheet">
                 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-                <link rel="stylesheet" href="{{ asset('Resources/Zebra/css/bootstrap.css') }}">
                  <style>
                                 .colorAnclas{
                                     color: black;
                                     font-size: 12px !important;
                                     line-height: 15px!important;
-                                    
+
                                 }
                                 .control-label{
                                     font-size: 12px !important;
                                     font-weight: 400;
                                 }
-                               
+
                                 .form-group.required .control-label:after {
                                     content:"*";
                                     color:red;
@@ -34,8 +33,8 @@
                                 }
 
                    </style>
-                {% block css_extend %}        
-                {% endblock %}    
+                {% block css_extend %}
+                {% endblock %}
             {% endblock css%}
 
 
@@ -46,31 +45,29 @@
             <link rel="icon" href="{{ asset('Resources/src/img/box.png')}}" type="image/x-icon">
 
             <script type="text/javascript" src="{{ asset('Resources/jquery/jquery-1.11.3.min.js') }}"></script>
-            <script src="{{ asset('Resources/Zebra/javascript/zebra_datepicker.js') }}"></script>
-            <script src="{{ asset('Resources/Zebra/inicializacioncalendarios.js') }}"></script>
 
             {% block js %}
 
-            {% endblock %}   
+            {% endblock %}
 
-                 
-        {% endblock %}    
+
+        {% endblock %}
     </head>
     <body>
  {% block body %}
         <!-- Boton con Dropdown -->
-				
+
         <!-- Barra de Navegacion con Breadcrumb -->
         {% include ':Layout:nav2.html.twig' %}
 	<!-- Fin de Barra de Navegacion -->
-                        
+
   <!-- Template -->
-            <div class="container">
-                
-           
+            <div class="container-fluid">
+
+
             {% block descripcion_y_acciones %}
-                
-                {% block descripcion %}                    
+
+                {% block descripcion %}
                 {% endblock %}
                 {% block acciones %}
 
@@ -82,17 +79,17 @@
                             <li>
                                 <a href="">Inicio</a>
                             </li>
-                            
-                            
+
+
                         </ul>
-                    </div> 
-                    
+                    </div>
+
                 {% endblock acciones %}
-            {% endblock %}	
-            {% block navegacion_Y_body %}                    
-                {% block navegacion %}                              
+            {% endblock %}
+            {% block navegacion_Y_body %}
+                {% block navegacion %}
                 {% endblock %}
-                               
+
                 {% block cuerpo %}
                     <div class="col-md-10" style="margin-bottom: 10px;">
                         <button class="btn btn-default sans" type="button" id="goBack" style="border-radius: 0 !important;">
@@ -101,9 +98,9 @@
                     </div>
               {#<div class="clearfix"></div>#}
                 {% endblock cuerpo %}
-            {% endblock %}	        	
+            {% endblock %}
 	</div>
- 
+
 {% endblock %}
 {%block js_template %}
     <script>
@@ -112,7 +109,7 @@
                 window.history.back();
             });
         </script>
-   
+
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="{{ asset('Resources/src/js/bootstrap.js')}}"></script>
@@ -128,6 +125,6 @@
     {% block js_extend %}
     {% endblock %}
 {% endblock %}
- 
+
     </body>
 </html>

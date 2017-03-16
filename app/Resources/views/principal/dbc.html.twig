@@ -8,17 +8,12 @@
     <link href="{{ asset("Resources/intro/introjs.css")}}" rel="stylesheet">
     <link href="{{ asset("Resources/intro/assets/css/bootstrap-responsive.min.css")}}" rel="stylesheet">
 
-
-    <link rel="stylesheet" href="{{ asset('Resources/select2/dist/css/select2.css')}}">
      <link rel="stylesheet" href="{{ asset('Resources/sweetalert-master/dist/sweetalert.css')}}">
-         <link rel="stylesheet" href="{{ asset('Resources/js/general/general.css')}}"> 
 {% endblock css%}
 {% block js %}
      {{parent()}}
     <script type="text/javascript" src="{{ asset("Resources/intro/intro.js")}}"></script>
     <script type="text/javascript" src="{{ asset("Resources/js/dbc/dbc.js")}}"></script>
-    <script src="{{ asset('Resources/jQuery-Mask/src/jquery.mask.js') }}"></script>
-    <script src="{{ asset('Resources/select2/dist/js/select2.js') }}"></script>
     <script src="{{ asset('Resources/sweetalert-master/dist/sweetalert.min.js') }}"></script>
 
 {% endblock %}
@@ -59,9 +54,6 @@
                       
                     </ul>
                 </div>  
-       
-            
-   
        {% endblock %}
 
 {% block cuerpo %}
@@ -76,10 +68,8 @@
       <div class="masthead">
         
       </div>
-
+        
       <hr>
-    
-
       <div class="jumbotron">
         <h4 id="step1">Big Data Converter</h4>
         <a class="btn btn-primary" href="javascript:void(0);" onclick="startIntro();">Iniciar</a>
@@ -108,13 +98,13 @@
                            <div class="row">\n\
                            <div class="form-column col-sm-3">\n\
                                 <div class="form-group" >\n\
-                                <label for="host" class="control-label">Host-name</label>\n\
-                                <input type="text" class="form-control" id="host" placeholder="Hostname" name="host" >\n\
+                                <label for="host" class="control-label">SERVIDOR</label>\n\
+                                <input type="text" class="form-control" id="host" placeholder="Server" name="host" >\n\
                                 </div>\n\
                            </div>\n\
 \                           <div class="form-column col-sm-3">\n\
                                 <div class="form-group" >\n\
-                                <label for="host" class="control-label">Port</label>\n\
+                                <label for="host" class="control-label">PUERTO</label>\n\
                                 <input type="text" class="form-control" id="port" placeholder="Port" name="port" >\n\
                                 </div>\n\
                            </div>\n\
@@ -122,13 +112,13 @@
 \                       <div class="clearfix"></div>\n\
                             <div class="form-column col-sm-3">\n\
                                 <div class="form-group" >\n\
-                                <label for="user" class="control-label">Usuario</label>\n\
-                                <input type="text" class="form-control" id="user" placeholder="Usuario" name="user" >\n\
+                                <label for="user" class="control-label">USUARIO</label>\n\
+                                <input type="text" class="form-control" id="user" placeholder="User" name="user" >\n\
                                 </div>\n\
                            </div>\n\
                             <div class="form-column col-sm-3"><div class="form-group" >\n\
-                                <label for="pass" class="control-label">Pass</label>\n\
-                                <input type="password" class="form-control" id="pass" placeholder="Contraseña" name="pass" >\n\
+                                <label for="pass" class="control-label">CONOTRASEÑA</label>\n\
+                                <input type="password" class="form-control" id="pass" placeholder="Password" name="pass" >\n\
                                 </div>\n\
                            </div>\n\
                             <div class="col-sm-6"></div>\n\
@@ -163,7 +153,7 @@
                             
                         </div>
                         <div class="modal-body" id="bdExistentes">
-
+                          
 
                         </div>
                       

@@ -4,65 +4,74 @@
 {% block descripcion_y_acciones %}
 
 
-    
+
         {% block descripcion %}
-            
+
         {% endblock%}
         {% block acciones %}
-            
+
         {% endblock %}
 
 
 {% endblock %}
 {% block js_extend %}
 
-      
-  {% endblock %} 
+
+  {% endblock %}
 
         {% block navegacion_Y_body %}
-  
+
         {% block navegacion %}
-            
+
         {% endblock %}
         {% block cuerpo %}
-    <div class="row">
-        <h3 style="color: black;margin-left:60px;margin-botton:30px;">Inicio de Sesi&oacute;n</h3>
-             
-  <form action="{% block form_action %}{{ path("abogado_security_check") }}{% endblock %}" method="post" id="frmLogin">    
-  
-    
-            {% block alert -%}
-            {% if error %}
-                <div style="color:red;margin-bottom: 20px;">{{ error.message }}</div>
-            {% endif %}
-        {% endblock %}     
-    <div class="col-md-3">
-          <!-- general form elements -->
-            <div class="box box-primary">
-  
-                <div class="form-group">
-                     <label for="correoEmpresa">Usuario :</label>
-                     <input type="text" class="form-control" id="username" name="_username" placeholder="User name" value="{{ last_username }}">
-                </div>
-                <div class="form-group">
-                     <label for="correoEmpresa">Contraseña:</label>
-                     <input type="password" class="form-control" id="contrasenha" name="_password" placeholder="*********">
-                </div>
-                
-                
-                <div class="form-group">
-                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary" name="login">
-                </div>
-                 
 
-           
-          </div>
-          
-    </div>
-        
-   </form>  
-            
+      <div class="container">
+            <div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+                <div class="row">
+                    <center><img src="{{ asset('Resources/src/img/Logo.png')}}" width="30%" style="margin-bottom: 25px"></center>
+                </div>
+                <div class="panel panel-default" >
+                    <div class="panel-heading">
+                        <div class="panel-title text-center"><h3><strong>Inicio de Sesi&oacute;n</strong></h3></div>
+                    </div>
+                    <div class="panel-body" >
+                        <form action="{% block form_action %}{{ path("abogado_security_check") }}{% endblock %}" method="post" id="frmLogin">
 
-    </div> 
+                        {% block alert -%}
+                        {% if error %}
+                            <div style="color:red;margin-bottom: 20px;">{{ error.message }}</div>
+                        {% endif %}
+                        {% endblock %}
+
+                      <!-- general form elements -->
+                            <label for="correoEmpresa" style="font-size: 13px">Usuario :</label>
+                            <div class="input-group">
+
+                                <span class="input-group-addon"><img src="{{ asset('Resources/src/img/user.png')}}"></span>
+                                <input type="text" class="form-control" id="username" name="_username" placeholder="User name" value="{{ last_username }}" style="height: 43px;">
+                            </div>
+
+                            <label for="correoEmpresa" style="font-size: 13px;margin-top: 8px;">Contraseña:</label>
+                            <div class="input-group">
+
+                                <span class="input-group-addon"><img src="{{ asset('Resources/src/img/lock.png')}}"></span>
+                                <input type="password" class="form-control" id="contrasenha" name="_password" placeholder="*********" style="height: 43px;">
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12 controls" style="margin-top: 20px;">
+                                    <center><a href="#" style="color: #4080ff">¿Necesitas una cuenta?</a></center>
+                                    <input type="submit" value="Iniciar Sesión" class="btn btn-primary btn-block" name="login"  style="height: 40px; margin-top: 10px;">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
 {% endblock %}
 {% endblock %}
